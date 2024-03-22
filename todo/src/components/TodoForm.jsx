@@ -22,7 +22,7 @@ const TodoForm = ({addTodo}) => {
         type="text" 
         placeholder='Digite a tarefa' 
         value={value} //adicionado para manipular o value e limpa-lo apos adicionar a tarefa (via handleSubmite setValue = vazio)
-        // onChange: ao mudar o valor do input, temos uma arrow funcao que captura o evento, executa setValue (muda o estado do value) para o value proprio evento no input
+        // onChange: ao mudar o valor do input, temos uma arrow function que captura o evento, executa setValue (muda o estado do value) para o value do proprio evento no input
         onChange={(e) => setValue(e.target.value)} /> 
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Selecione uma categoria</option>

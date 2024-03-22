@@ -5,7 +5,7 @@ body {
   color: #283740;
   background-image: url('./img/bg.jpg');
   background-position: center;
-  background-size:cover;
+  background-size: cover;
 }
 
 .app {
@@ -42,6 +42,7 @@ button {
   cursor: pointer;
   transition: .5s;
   opacity: 0.8;
+  margin-right: 10px;
 }
 
 button:hover {
@@ -83,4 +84,20 @@ input, select {
   border: 1px solid #ddd;
   border-radius: 3px;
   width: 100%;
+}
+
+.filter, .search {
+  border-bottom: 1px solid #808080;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.filter-options div {
+  flex: 1 1 0;   /* flex: valores de flex-grow, flex-shrink, felx-basis  */
 }
