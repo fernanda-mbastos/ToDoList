@@ -57,17 +57,28 @@ const App = () => {
   }
 
   const [search, setSearch] = useState('')
+
+  const [filter, setFilter] = useState('All') // iniciar com o value definido no componente Filter
+  const [sort, setSort] = useState('Asc')
   
   return (
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <Search search={search} setSearch={setSearch}/>
-      <Filter />
+      <Filter filter={filter} setFilter={setFilter} setSort={setSort}/>
       <div className="todo-list">
         {todos
+        .filter((todo) => filter === 'All' ? true : filter === 'Completed' ? todo.isCompleted : !todo.isCompleted )
         // FILTER => filtra 
         .filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase()))
-        // MAP => itera o array Todos para criar a lista dos Todos, cada elemento do array vira um Todo ao chamar o componente Todo
+        // compara entre dois textos (a,b) usando if ternario. se for Asc, a vem primeiro que b, se nao, o contrario (dessa forma ordena por ordem alfabetica)
+        .sort((a,b) => 
+          sort === 'Asc'
+          ? a.text.localeCompare(b.text)
+          : b.text.localeCompare(a.text)
+        )
+        
+        // MAP => itera o array Todos para criar a lista dos Todos, cada elemento do array vira um Todo ao chamar o componente Todo      
         .map((todo) => ( 
           <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo}/> 
         ))} 
